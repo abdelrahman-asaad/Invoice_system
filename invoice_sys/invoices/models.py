@@ -29,3 +29,9 @@ class InvoiceItem(models.Model):
 
     def __str__(self):
         return f"{self.product.name} x {self.quantity}"
+    @property
+    def total_price(self):
+        return self.quantity * self.unit_price
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name} for Invoice #{self.invoice.id}"
