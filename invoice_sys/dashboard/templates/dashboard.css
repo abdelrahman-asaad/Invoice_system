@@ -1,0 +1,106 @@
+/* 🎨 Global */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #f4f6f9;
+    color: #333;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: #1e293b;
+    color: white;
+    min-height: 100vh;
+    padding: 1rem;
+    position: fixed;
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.sidebar a {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.sidebar a:hover {
+    background: #334155;
+    color: #fff;
+}
+
+/* Main content */
+.main {
+    margin-left: 220px;
+    flex: 1;
+    padding: 1.5rem;
+}
+
+/* Header */
+header {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* KPI cards */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.kpi-card {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.kpi-card h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #64748b;
+}
+.kpi-card p {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    color: #2563eb;
+}
+
+/* Charts grid */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+canvas {
+    width: 100% !important;
+    height: 300px !important;
+}

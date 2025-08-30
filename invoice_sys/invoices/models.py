@@ -15,11 +15,19 @@ class Invoice(BaseModel):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='invoices')
     date = models.DateField()
     due_date = models.DateField()
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
-    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='unpaid')
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+    def calculate_total(self):
+        return sum(item.total_price for item in self.items.all())
+
+    def save(self, *args, **kwargs):
+        self.total_amount = self.calculate_total()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Invoice #{self.id} - {self.client.name}"
+
 
 class InvoiceItem(models.Model):
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE, related_name='items')
@@ -27,8 +35,6 @@ class InvoiceItem(models.Model):
     quantity = models.PositiveIntegerField()
     unit_price = models.DecimalField(max_digits=10, decimal_places=2)
 
-    def __str__(self):
-        return f"{self.product.name} x {self.quantity}"
     @property
     def total_price(self):
         return self.quantity * self.unit_price

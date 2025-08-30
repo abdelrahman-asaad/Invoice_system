@@ -4,4 +4,4 @@ from .models import AuditLog
 class AuditLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = AuditLog
-        fields = ['id', 'action', 'user', 'timestamp', 'details']
+        fields = "__all__"

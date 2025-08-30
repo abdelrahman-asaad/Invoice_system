@@ -4,7 +4,7 @@ from django.db import models
 #creating custom user and registering it in settings.py: AUTH_USER_MODEL = 'accounts.User'
 class User(AbstractUser):
     ROLE_CHOICES = (
-        ('owner', 'Owner'),
+        ('owner', 'Owner'), #admin
         ('manager', 'Manager'),
         ('sales', 'Sales'),
     )
