@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 # 🔹 اختيارات العملات
@@ -38,7 +39,7 @@ class Product(models.Model):
 
     category = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True, blank=True)
     stock = models.PositiveIntegerField(default=0)
-
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name="products_created")
     def __str__(self):
         return f"{self.name} ({self.sale_price} EGP)"
 

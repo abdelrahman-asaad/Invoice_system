@@ -22,10 +22,10 @@ urlpatterns = [
     path('api/accounts/', include('accounts.urls')),   # كل الendpoints الخاصة بالaccounts
     path('api/products/', include('products.urls')),   # (لما تجهز products)
     path('api/invoices/', include('invoices.urls')),   # (لما تجهز invoices)
-    path("api/Clients", include("clients.urls")),
+    path("api/Clients/", include("clients.urls")),
     path("api/payments/", include("payments.urls")),
     path('api/dashboard/', include('dashboard.urls')),
-    path("api/auditlogs", include("auditlog.urls")),
+    path("api/auditlogs/", include("auditlog.urls")),
 
 
 
