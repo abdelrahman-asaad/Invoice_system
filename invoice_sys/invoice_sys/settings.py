@@ -166,7 +166,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #______________
 
-SECRET_KEY = 'your-very-secret-production-key'
+#SECRET_KEY = 'your-very-secret-production-key'
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
