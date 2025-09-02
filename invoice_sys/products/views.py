@@ -21,7 +21,8 @@ class ProductListCreateView(generics.ListCreateAPIView):
 
     def get_serializer_class(self):
         user = self.request.user
-        if user.is_authenticated and user.role in ["Manager", "Owner"]:
+        if user.is_authenticated and user.role.lower() in ["manager", "owner"]:
+
             return FullProductSerializer
         return PublicProductSerializer
 
