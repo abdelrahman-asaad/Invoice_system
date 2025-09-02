@@ -37,7 +37,7 @@ class ProductRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_serializer_class(self):
         user = self.request.user
-        if user.is_authenticated and user.role in ["Manager", "Owner"]:
+        if user.is_authenticated and user.role.lower() in ["Manager", "Owner"]:
             return FullProductSerializer
         return PublicProductSerializer
 
