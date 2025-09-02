@@ -26,18 +26,22 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    description = models.TextField(blank=True, null=True)
+    name = models.CharField(max_length=100, unique=True) #send to json
+    description = models.TextField(blank=True, null=True) #null > dont send to json
 
     # 🟢 السعر بعد التحويل للجنيه (اللي هنتعامل بيه في النظام)
-    sale_price = models.DecimalField(max_digits=10, decimal_places=2)
-    cost_price = models.DecimalField(max_digits=10, decimal_places=2)
+    sale_price = models.DecimalField(max_digits=10, decimal_places=2) #send to json
+    cost_price = models.DecimalField(max_digits=10, decimal_places=2) #send to json
 
     # 🟡 السعر الأصلي + عملته
-    original_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    original_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True) #dont send to json
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default="EGP")
-
-    category = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True, blank=True)
+#blank و null مش متعرفة → الافتراض:
+#blank=False → الـ serializer هيتطلب الحقل.
+#null=False → الـ DB ما يسمحش بقيمة NULL.
+#عندك default="EGP" → لو مابعتش الحقل، Django هيخزن "EGP" تلقائيًا.
+    
+    category = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True, blank=True) #dont send to json
     stock = models.PositiveIntegerField(default=0)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name="products_created")
     def __str__(self):

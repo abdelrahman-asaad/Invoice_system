@@ -25,5 +25,3 @@ class UpdateUserRoleView(generics.UpdateAPIView): #to allow owner to set roles t
     queryset = User.objects.all()
     serializer_class = UpdateRoleSerializer
     permission_classes = [IsOwner]
-
-    
